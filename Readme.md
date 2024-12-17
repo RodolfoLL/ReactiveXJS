@@ -7,6 +7,39 @@
 Es una API para programacion asincrona usando observables.
 ReactiveX es una combinacion de las mejores ideas de el patron observador,el patron iterador y la programacion funcional.
 
+## Cuando usar programacion Reactiva?
+- Eventos en la interfaz de usuario.
+- Cuando es necesario notificar sobre cambios en objeto(s).
+- Comunicaciones por socket.
+- Cuando necesitamos trabajar con flujos de informacion.
+## Piezas fundamentales de la programacion reactiva
+- Observables
+- Subscribers
+- Operators
+### Observables
+- Pieza fundamental de la programcion reactiva.
+- Son la fuente de informacion.
+- Pueden emitir multiples valores solo uno o ninguno.
+- Pueden emitir errores (infinitos o finitos). Cuando son finitos ellos pueden completarse.
+- Pueden ser sincronos o asincronos.
+### Subscribers
+- Son los que se subscriben a un observable,esto es estar pendiente de lo que dice un observable.
+- Consumen / observan la data del observable.
+- Pueden recibir los errores y eventos del observable(se desconoce todo lo que viene por detras).
+### Operators
+- Son muy utilizados para transformar los observables(map,group,scan).
+- Son utilizados para filtrar observables (filter,distinct,skip,debounce ..).
+- Son usados para combinar observables.
+- Son usados para crear observables.
+## Beneficios de la programacion reactiva
+- Evitar el "callback hell".
+- Trabajar de forma simple tareas sincronas y asincronas.
+- Uso de operadores para reducir o simplificar el trabajo.
+- Es facil de transformar los flujos (streams) de informacion.
+- Codigo mas limpio y facil de leer.
+- Facil de implementar.
+- Facil anexar procedimientos sin alterar el producto final.
+ 
 Para mas informacion se pueden consultar los siguientes enlaces [ReactiveX](https://reactivex.io/) y [Rxjs-documentacion](https://rxjs.dev/)
 ## Que es el patron observer?
 Es un patron de diseño de software que define una dependencia del tipo unos a muchos entre objetos, de manera que cuando uno de los objetos cambia su estado, notifica esta cambio a todos los dependientes.

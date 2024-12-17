@@ -12,21 +12,22 @@ const intervalo$ = new Observable<number>((subscriber) => {
 		subscriber.next(count);
 		count++;
 	}, 1000);
-
+    //*este timeout se ejecutara antes del ultimo setTimeout
     setTimeout(() => {
         subscriber.complete();
     },2500)
+	//*importante cerrar el intervalo por que si no en background seguira ejecutandose
     return () => {
         clearInterval(interval);
         console.log('Intervalo destruido');
     }
 });
 
-// esta es una subscripcion
+// estas son subbscripciones
 const subs = intervalo$.subscribe(observer);
 const subs2 =intervalo$.subscribe(observer);
 
-//con el metodo add podemos concatnera varios observables y a la vez desusbrimir con una solo sentencia
+//con el metodo add podemos concatnera varios observables y a la vez desubscribirnos con una solo sentencia
 subs.add(subs2);
 setTimeout(() => {
 	//cancelamos la subscripcion

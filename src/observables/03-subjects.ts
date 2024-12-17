@@ -12,16 +12,18 @@ const intervalo$ = new Observable<number>((subscriber) => {
 		subscriber.next(randomNum);
 	}, 2000);
 
+	//* es importante cerrar el intervalo aunque te hayas desubscrito del observable
+	//* si no se cierra este continuara ejecutandose en el background
 	return () => {
 		clearInterval(intervalID), console.log('intervalo destruido');
 	};
 });
 
 /**
- * Caracteristicas importantes
- * 1.-Casteo multiple
- * 2.-Tambien es un observer
- * 3.-next,error,complete
+ * * Caracteristicas importantes del subject
+ * * 1.-Casteo multiple
+ * * 2.-Tambien es un observer
+ * * 3.-next,error,complete
  */
 const subject$ = new Subject();
 intervalo$.subscribe(subject$);
@@ -38,3 +40,8 @@ setTimeout(() => {
 	subject$.complete();
 	subscription.unsubscribe();	
 }, 3000);
+
+/*
+*Cuando la data es producida por el observable en si mismo, es cosiderado "un cold observable",
+* Pero cuando la data es producida fuera del observable es conocido como "Hot observable".
+*/
